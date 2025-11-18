@@ -14,16 +14,18 @@ public class Mision {
     private String descripcion;
     private int recompensaXP;
     private Personaje personaje;
+    private boolean completada;
 
     public Mision() {
     }
 
-    public Mision(int id, String titulo, String descripcion, int recompensaXP, Personaje personaje) {
+    public Mision(int id, String titulo, String descripcion, int recompensaXP, Personaje personaje, boolean completada) {
         this.id = id;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.recompensaXP = recompensaXP;
         this.personaje = personaje;
+        this.completada = completada;
     }
 
     public int getId() {
@@ -65,8 +67,15 @@ public class Mision {
     public void setPersonaje(Personaje personaje) {
         this.personaje = personaje;
     }
+
+    public boolean isCompletada() {
+        return completada;
+    }
+
+    public void setCompletada(boolean completada) {
+        this.completada = completada;
+    }
     
-    //metodo
+    //metodos
     
-        
 }

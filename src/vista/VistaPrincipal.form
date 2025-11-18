@@ -68,14 +68,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Personajes"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnInventario">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Chiller" size="30" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Inventario"/>
-          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPersonajeActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnMision">
           <Properties>

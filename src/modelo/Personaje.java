@@ -11,21 +11,29 @@ package modelo;
 public class Personaje {
     private int id;
     private String nombre;
-    private int nivel;
     private String clase;
-    private double vida;
-    private double ataque;
+    private int nivel;
+    private int experiencia;
+    private int salud;
+    private int mana;
+    private int fuerza;
+    private int agilidad;
+    private int inteligencia;
 
     public Personaje() {
     }
 
-    public Personaje(int id, String nombre, int nivel, String clase, double vida, double ataque) {
+    public Personaje(int id, String nombre, String clase, int nivel, int experiencia, int salud, int mana, int fuerza, int agilidad, int inteligencia) {
         this.id = id;
         this.nombre = nombre;
-        this.nivel = nivel;
         this.clase = clase;
-        this.vida = vida;
-        this.ataque = ataque;
+        this.nivel = nivel;
+        this.experiencia = experiencia;
+        this.salud = salud;
+        this.mana = mana;
+        this.fuerza = fuerza;
+        this.agilidad = agilidad;
+        this.inteligencia = inteligencia;
     }
 
     public int getId() {
@@ -44,14 +52,6 @@ public class Personaje {
         this.nombre = nombre;
     }
 
-    public int getNivel() {
-        return nivel;
-    }
-
-    public void setNivel(int nivel) {
-        this.nivel = nivel;
-    }
-
     public String getClase() {
         return clase;
     }
@@ -60,25 +60,68 @@ public class Personaje {
         this.clase = clase;
     }
 
-    public double getVida() {
-        return vida;
+    public int getNivel() {
+        return nivel;
     }
 
-    public void setVida(double vida) {
-        this.vida = vida;
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
     }
 
-    public double getAtaque() {
-        return ataque;
+    public int getExperiencia() {
+        return experiencia;
     }
 
-    public void setAtaque(double ataque) {
-        this.ataque = ataque;
+    public void setExperiencia(int experiencia) {
+        this.experiencia = experiencia;
+    }
+
+    public int getSalud() {
+        return salud;
+    }
+
+    public void setSalud(int salud) {
+        this.salud = salud;
+    }
+
+    public int getMana() {
+        return mana;
+    }
+
+    public void setMana(int mana) {
+        this.mana = mana;
+    }
+
+    public int getFuerza() {
+        return fuerza;
+    }
+
+    public void setFuerza(int fuerza) {
+        this.fuerza = fuerza;
+    }
+
+    public int getAgilidad() {
+        return agilidad;
+    }
+
+    public void setAgilidad(int agilidad) {
+        this.agilidad = agilidad;
+    }
+
+    public int getInteligencia() {
+        return inteligencia;
+    }
+
+    public void setInteligencia(int inteligencia) {
+        this.inteligencia = inteligencia;
+    }
+
+    @Override
+    public String toString() {
+        return "Personaje{" + "id=" + id + ", nombre=" + nombre + ", clase=" + clase + ", nivel=" + nivel + ", experiencia=" + experiencia + ", salud=" + salud + ", mana=" + mana + ", fuerza=" + fuerza + ", agilidad=" + agilidad + ", inteligencia=" + inteligencia + '}';
     }
     
-    //metodo
-    public String mostrarInfo(){
-        return "ID: " + id + " | Nombre: " + nombre + " | Nivel : " + nivel + " | Clase: " + clase + " | Vida: " + vida + " | Ataque: " + ataque;
-    }
+    //metodos
+    
     
 }

@@ -34,7 +34,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
         panelPrincipal = new javax.swing.JPanel();
         lblGestorRPG = new javax.swing.JLabel();
         btnPersonaje = new javax.swing.JButton();
-        btnInventario = new javax.swing.JButton();
         btnMision = new javax.swing.JButton();
 
         jRadioButtonMenuItem1.setSelected(true);
@@ -53,11 +52,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         btnPersonaje.setFont(new java.awt.Font("Chiller", 1, 30)); // NOI18N
         btnPersonaje.setText("Personajes");
+        btnPersonaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPersonajeActionPerformed(evt);
+            }
+        });
         panelPrincipal.add(btnPersonaje);
-
-        btnInventario.setFont(new java.awt.Font("Chiller", 1, 30)); // NOI18N
-        btnInventario.setText("Inventario");
-        panelPrincipal.add(btnInventario);
 
         btnMision.setFont(new java.awt.Font("Chiller", 1, 30)); // NOI18N
         btnMision.setText("Misiones");
@@ -76,6 +76,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnPersonajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPersonajeActionPerformed
+        
+        VistaPersonaje vistaPersonaje = new VistaPersonaje();
+        vistaPersonaje.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPersonajeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -103,7 +110,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnInventario;
     private javax.swing.JButton btnMision;
     private javax.swing.JButton btnPersonaje;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
