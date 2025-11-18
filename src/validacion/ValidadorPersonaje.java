@@ -8,6 +8,6 @@ package validacion;
  *
  * @author Patin
  */
-public class Validador {
+public class ValidadorPersonaje {
     
 }

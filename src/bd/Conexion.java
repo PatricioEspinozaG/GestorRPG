@@ -10,7 +10,7 @@ public class Conexion {
         Connection conn = null;
         try {
            Class.forName("com.mysql.cj.jdbc.Driver");
-           conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/modulo3", "root","");
+           conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/rpgbase", "root","");
             
         }catch (ClassNotFoundException | SQLException ex){
             System.out.println("Error de la clase Conexion" + ex.getMessage());

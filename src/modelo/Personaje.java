@@ -16,15 +16,14 @@ public class Personaje {
     private int experiencia;
     private int salud;
     private int mana;
-    private int fuerza;
+    private int fuerza; 
     private int agilidad;
     private int inteligencia;
 
     public Personaje() {
     }
 
-    public Personaje(int id, String nombre, String clase, int nivel, int experiencia, int salud, int mana, int fuerza, int agilidad, int inteligencia) {
-        this.id = id;
+    public Personaje(String nombre, String clase, int nivel, int experiencia, int salud, int mana, int fuerza, int agilidad, int inteligencia) {
         this.nombre = nombre;
         this.clase = clase;
         this.nivel = nivel;
