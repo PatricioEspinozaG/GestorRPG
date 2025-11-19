@@ -13,7 +13,6 @@ public class Personaje {
     private String nombre;
     private String clase;
     private int nivel;
-    private int experiencia;
     private int salud;
     private int mana;
     private int fuerza; 
@@ -23,11 +22,10 @@ public class Personaje {
     public Personaje() {
     }
 
-    public Personaje(String nombre, String clase, int nivel, int experiencia, int salud, int mana, int fuerza, int agilidad, int inteligencia) {
+    public Personaje(String nombre, String clase, int nivel, int salud, int mana, int fuerza, int agilidad, int inteligencia) {
         this.nombre = nombre;
         this.clase = clase;
         this.nivel = nivel;
-        this.experiencia = experiencia;
         this.salud = salud;
         this.mana = mana;
         this.fuerza = fuerza;
@@ -65,14 +63,6 @@ public class Personaje {
 
     public void setNivel(int nivel) {
         this.nivel = nivel;
-    }
-
-    public int getExperiencia() {
-        return experiencia;
-    }
-
-    public void setExperiencia(int experiencia) {
-        this.experiencia = experiencia;
     }
 
     public int getSalud() {
@@ -117,10 +107,8 @@ public class Personaje {
 
     @Override
     public String toString() {
-        return "Personaje{" + "id=" + id + ", nombre=" + nombre + ", clase=" + clase + ", nivel=" + nivel + ", experiencia=" + experiencia + ", salud=" + salud + ", mana=" + mana + ", fuerza=" + fuerza + ", agilidad=" + agilidad + ", inteligencia=" + inteligencia + '}';
+        return "Personaje{" + "id=" + id + ", nombre=" + nombre + ", clase=" + clase + ", nivel=" + nivel + ", salud=" + salud + ", mana=" + mana + ", fuerza=" + fuerza + ", agilidad=" + agilidad + ", inteligencia=" + inteligencia + '}';
     }
-    
-    //metodos
-    
+
     
 }

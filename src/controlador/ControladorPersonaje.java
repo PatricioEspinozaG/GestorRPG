@@ -5,6 +5,7 @@
 package controlador;
 
 import bd.Conexion;
+import com.mysql.cj.protocol.Resultset;
 import modelo.Personaje;
 import java.sql.Connection;
 import java.sql.*;
@@ -25,17 +26,16 @@ public class ControladorPersonaje {
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexion();
             
-            String query = "INSERT INTO personaje(nombre,clase,nivel,experiencia,salud,mana,fuerza,agilidad,inteligencia) VALUES(?,?,?,?,?,?,?,?,?)";
+            String query = "INSERT INTO personaje(nombre,clase,nivel,salud,mana,fuerza,agilidad,inteligencia) VALUES(?,?,?,?,?,?,?,?)";
             PreparedStatement stmt = cnx.prepareCall(query);
             stmt.setString(1, p.getNombre());
             stmt.setString(2, p.getClase());
             stmt.setInt(3, p.getNivel());
-            stmt.setInt(4, p.getExperiencia());
-            stmt.setInt(5, p.getSalud());
-            stmt.setInt(6, p.getMana());
-            stmt.setInt(7, p.getFuerza());
-            stmt.setInt(8, p.getAgilidad());
-            stmt.setInt(9, p.getInteligencia());
+            stmt.setInt(4, p.getSalud());
+            stmt.setInt(5, p.getMana());
+            stmt.setInt(6, p.getFuerza());
+            stmt.setInt(7, p.getAgilidad());
+            stmt.setInt(8, p.getInteligencia());
             
             stmt.executeUpdate();
             stmt.close();
@@ -67,7 +67,6 @@ public class ControladorPersonaje {
                 p.setNombre(rs.getString("Nombre"));
                 p.setClase(rs.getString("Clase"));
                 p.setNivel(rs.getInt("Nivel"));
-                p.setExperiencia(rs.getInt("Experiencia"));
                 p.setSalud(rs.getInt("Salud"));
                 p.setMana(rs.getInt("Mana"));
                 p.setFuerza(rs.getInt("Fuerza"));
@@ -111,5 +110,63 @@ public class ControladorPersonaje {
             return false;
         }
     }
+    
+    public Personaje editarPersonaje(Personaje per){
+          
+       try{
+           Conexion con = new Conexion();
+           Connection cnx = con.obtenerConexion();
+           
+           String query = "UPDATE personaje set nombre=?, clase=?, nivel=?, salud=?, mana=?, fuerza=?, agilidad=?,inteligencia=? WHERE id=?";
+           PreparedStatement stmt = cnx.prepareCall(query);
+           
+           stmt.setString(1, per.getNombre());
+           stmt.setString(2, per.getClase());
+           stmt.setInt(3, per.getNivel());
+           stmt.setInt(4, per.getSalud());
+           stmt.setInt(5, per.getMana());
+           stmt.setInt(6, per.getFuerza());
+           stmt.setInt(7, per.getAgilidad());
+           stmt.setInt(8, per.getInteligencia());           
+           
+           stmt.executeUpdate();
+           stmt.close();
+           cnx.close();
+           
+           return per;
+       }
+       catch(SQLException e){
+           System.out.println("No se puede conectar con la base para actualizar"+e.getMessage());
+           return per;
+       }
+    }
+    
+    public boolean buscarPorId(int id){
+        boolean existe = false;
+        
+        try{
+            Conexion con = new Conexion();
+            Connection cnx = con.obtenerConexion();
+            
+            String query = "SELECT* FROM personaje WHERE id=?";
+            PreparedStatement stmt = cnx.prepareCall(query);
+            stmt.setInt(1, id);
+            
+            ResultSet rs = stmt.executeQuery();
+            
+            if(rs.next()){
+                existe = true;              
+            }          
+            
+            stmt.close();
+            cnx.close();
+        }
+        catch(SQLException e){
+            System.out.println("Error al conectar con la base para buscar "+e.getMessage());
+            
+        }
+        return existe;
+    }
+    
     
 }
