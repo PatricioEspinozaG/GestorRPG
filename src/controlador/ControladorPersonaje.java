@@ -8,6 +8,8 @@ import bd.Conexion;
 import modelo.Personaje;
 import java.sql.Connection;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 /**
  *
  * @author Patin
@@ -46,6 +48,68 @@ public class ControladorPersonaje {
             return false;
         }
     }
+   
+        public List<Personaje> listar(){
+        
+        List<Personaje> lista = new ArrayList<>();
+        try{
+            Conexion con = new Conexion();
+            Connection cnx = con.obtenerConexion();
+            
+            String query = "SELECT* FROM personaje";
+            java.sql.PreparedStatement stmt = cnx.prepareCall(query);
+            
+            java.sql.ResultSet rs = stmt.executeQuery();
+            
+            while (rs.next()){
+                Personaje p = new Personaje();
+                p.setId(rs.getInt("Id"));
+                p.setNombre(rs.getString("Nombre"));
+                p.setClase(rs.getString("Clase"));
+                p.setNivel(rs.getInt("Nivel"));
+                p.setExperiencia(rs.getInt("Experiencia"));
+                p.setSalud(rs.getInt("Salud"));
+                p.setMana(rs.getInt("Mana"));
+                p.setFuerza(rs.getInt("Fuerza"));
+                p.setAgilidad(rs.getInt("Agilidad"));
+                p.setInteligencia(rs.getInt("Inteligencia"));
+                
+                lista.add(p);
+            }
+            
+            rs.close();
+            stmt.close();
+            cnx.close();
+            
+            return lista;
+        }       
+        catch(SQLException e){
+            System.out.println("Error al consultar para listar datos"+e.getMessage());
+            return lista;
+        }
+    }
     
+    public boolean borrarPersonaje(int id){
+        try{
+            Conexion con = new Conexion();
+            Connection cnx = con.obtenerConexion();
+            
+            String query = "DELETE FROM personaje WHERE id=?";
+            java.sql.PreparedStatement stmt = cnx.prepareCall(query);
+            
+            stmt.setInt(1, id);
+            
+            stmt.executeUpdate();
+            stmt.close();
+            cnx.close();
+            
+            
+        return true;    
+        }   
+        catch(SQLException e){
+            System.out.println("Error al consultar para borrar datos"+e.getMessage());
+            return false;
+        }
+    }
     
 }

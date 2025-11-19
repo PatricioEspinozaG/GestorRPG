@@ -6,7 +6,10 @@ package vista;
 
 import controlador.ControladorPersonaje;
 import static java.awt.image.ImageObserver.WIDTH;
+import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 import modelo.Personaje;
 
 /**
@@ -81,16 +84,19 @@ public class VistaPersonaje extends javax.swing.JFrame {
         txtInteligencia = new javax.swing.JTextField();
         btnGuardarPersonaje = new javax.swing.JButton();
         comboClases = new javax.swing.JComboBox<>();
-        jPanel_borrarPersonaje = new javax.swing.JPanel();
-        jPanel_editarPersonaje = new javax.swing.JPanel();
         jPanel_listarPersonaje = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        jTable_listarPersonajes = new javax.swing.JTable();
+        btnListarTodos = new javax.swing.JButton();
+        jPanel_editarPersonaje = new javax.swing.JPanel();
+        jPanel_borrarPersonaje = new javax.swing.JPanel();
+        lblBorrar = new javax.swing.JLabel();
+        txtIngreseIdBorrar = new javax.swing.JTextField();
+        btnBorrarPersonaje = new javax.swing.JButton();
         jPanel_buscarPersonaje = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(580, 620));
+        setPreferredSize(new java.awt.Dimension(600, 630));
 
         lblGestionPersonaje.setFont(new java.awt.Font("Chiller", 1, 36)); // NOI18N
         lblGestionPersonaje.setText("Gestion Personajes");
@@ -238,38 +244,12 @@ public class VistaPersonaje extends javax.swing.JFrame {
 
         jTabbedPanePersonajes.addTab("Agregar Personaje", jPanel_agregrarPersonaje);
 
-        javax.swing.GroupLayout jPanel_borrarPersonajeLayout = new javax.swing.GroupLayout(jPanel_borrarPersonaje);
-        jPanel_borrarPersonaje.setLayout(jPanel_borrarPersonajeLayout);
-        jPanel_borrarPersonajeLayout.setHorizontalGroup(
-            jPanel_borrarPersonajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 580, Short.MAX_VALUE)
-        );
-        jPanel_borrarPersonajeLayout.setVerticalGroup(
-            jPanel_borrarPersonajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 498, Short.MAX_VALUE)
-        );
-
-        jTabbedPanePersonajes.addTab("Borrar Personaje", jPanel_borrarPersonaje);
-
-        javax.swing.GroupLayout jPanel_editarPersonajeLayout = new javax.swing.GroupLayout(jPanel_editarPersonaje);
-        jPanel_editarPersonaje.setLayout(jPanel_editarPersonajeLayout);
-        jPanel_editarPersonajeLayout.setHorizontalGroup(
-            jPanel_editarPersonajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 580, Short.MAX_VALUE)
-        );
-        jPanel_editarPersonajeLayout.setVerticalGroup(
-            jPanel_editarPersonajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 498, Short.MAX_VALUE)
-        );
-
-        jTabbedPanePersonajes.addTab("Editar Personaje", jPanel_editarPersonaje);
-
         java.awt.GridBagLayout jPanel_listarPersonajeLayout = new java.awt.GridBagLayout();
         jPanel_listarPersonajeLayout.columnWidths = new int[] {0};
         jPanel_listarPersonajeLayout.rowHeights = new int[] {0, 10, 0, 10, 0, 10, 0};
         jPanel_listarPersonaje.setLayout(jPanel_listarPersonajeLayout);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable_listarPersonajes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -280,20 +260,63 @@ public class VistaPersonaje extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTable_listarPersonajes);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         jPanel_listarPersonaje.add(jScrollPane1, gridBagConstraints);
 
-        jButton1.setText("jButton1");
+        btnListarTodos.setText("LISTAR");
+        btnListarTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarTodosActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
-        jPanel_listarPersonaje.add(jButton1, gridBagConstraints);
+        jPanel_listarPersonaje.add(btnListarTodos, gridBagConstraints);
 
         jTabbedPanePersonajes.addTab("Listar Personaje", jPanel_listarPersonaje);
+
+        java.awt.GridBagLayout jPanel_editarPersonajeLayout = new java.awt.GridBagLayout();
+        jPanel_editarPersonajeLayout.columnWidths = new int[] {0, 12, 0, 12, 0};
+        jPanel_editarPersonajeLayout.rowHeights = new int[] {0, 10, 0, 10, 0};
+        jPanel_editarPersonaje.setLayout(jPanel_editarPersonajeLayout);
+        jTabbedPanePersonajes.addTab("Editar Personaje", jPanel_editarPersonaje);
+
+        jPanel_borrarPersonaje.setLayout(new java.awt.GridBagLayout());
+
+        lblBorrar.setText("Ingrese la ID");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        jPanel_borrarPersonaje.add(lblBorrar, gridBagConstraints);
+
+        txtIngreseIdBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIngreseIdBorrarActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel_borrarPersonaje.add(txtIngreseIdBorrar, gridBagConstraints);
+
+        btnBorrarPersonaje.setText("BORRAR");
+        btnBorrarPersonaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarPersonajeActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        jPanel_borrarPersonaje.add(btnBorrarPersonaje, gridBagConstraints);
+
+        jTabbedPanePersonajes.addTab("Borrar Personaje", jPanel_borrarPersonaje);
 
         javax.swing.GroupLayout jPanel_buscarPersonajeLayout = new javax.swing.GroupLayout(jPanel_buscarPersonaje);
         jPanel_buscarPersonaje.setLayout(jPanel_buscarPersonajeLayout);
@@ -331,6 +354,8 @@ public class VistaPersonaje extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    ControladorPersonaje controlador = new ControladorPersonaje();
+    
     private void btnGuardarPersonajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarPersonajeActionPerformed
         String nombre, clase;
         int nivel, experiencia, salud, mana, fuerza, agilidad, inteligencia;
@@ -346,8 +371,7 @@ public class VistaPersonaje extends javax.swing.JFrame {
         inteligencia = Integer.parseInt(this.txtInteligencia.getText());
         
         Personaje personaje = new Personaje(nombre, clase, nivel, experiencia, salud, mana, fuerza, agilidad, inteligencia);
-        ControladorPersonaje controlador = new ControladorPersonaje();
-        
+       
         if(controlador.agregarPersonaje(personaje)){
             javax.swing.JOptionPane.showMessageDialog(null, "Personaje Agregado.");
             this.limpiarCamposAgregar();
@@ -357,6 +381,56 @@ public class VistaPersonaje extends javax.swing.JFrame {
         // T
         // TODO add your handling code here:
     }//GEN-LAST:event_btnGuardarPersonajeActionPerformed
+
+    private void btnListarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarTodosActionPerformed
+                int id;
+        String nombre, clase;
+        int nivel, experiencia, salud, mana, fuerza, agilidad, inteligencia;
+        
+        DefaultTableModel modelo = (DefaultTableModel) this.jTable_listarPersonajes.getModel();
+        
+        modelo.setRowCount(0);
+        
+        List<Personaje> lista = controlador.listar();
+        for (Personaje per : lista) {
+            id = per.getId();
+            nombre = per.getNombre();
+            clase = per.getClase();
+            nivel = per.getNivel();
+            experiencia = per.getExperiencia();
+            salud = per.getSalud();
+            mana = per.getMana();
+            fuerza = per.getFuerza();
+            agilidad = per.getAgilidad();
+            inteligencia = per.getInteligencia();
+
+            modelo.addRow(new Object[]{id,nombre,clase,nivel,experiencia,salud,mana,fuerza,agilidad,inteligencia});
+        }
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnListarTodosActionPerformed
+
+    private void btnBorrarPersonajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarPersonajeActionPerformed
+                int id = Integer.parseInt(this.txtIngreseIdBorrar.getText());
+        
+        int op = JOptionPane.showConfirmDialog(this, "Seguro desea eliminar el personaje?","Eliminar",0);
+        
+        if(op == 0){
+            controlador.borrarPersonaje(id);
+            javax.swing.JOptionPane.showMessageDialog(null, "Personaje Eliminado", "Eliminar",1);
+            this.txtIngreseIdBorrar.setText("");           
+        }else{
+            javax.swing.JOptionPane.showMessageDialog(null, "Borrado Cancelado", "Eliminar", 2);
+            this.txtIngreseIdBorrar.setText("");
+        }
+        
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBorrarPersonajeActionPerformed
+
+    private void txtIngreseIdBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIngreseIdBorrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIngreseIdBorrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -384,9 +458,10 @@ public class VistaPersonaje extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBorrarPersonaje;
     private javax.swing.JButton btnGuardarPersonaje;
+    private javax.swing.JButton btnListarTodos;
     private javax.swing.JComboBox<String> comboClases;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel_agregrarPersonaje;
     private javax.swing.JPanel jPanel_borrarPersonaje;
     private javax.swing.JPanel jPanel_buscarPersonaje;
@@ -394,8 +469,9 @@ public class VistaPersonaje extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel_listarPersonaje;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPanePersonajes;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable_listarPersonajes;
     private javax.swing.JLabel lblAgilidad;
+    private javax.swing.JLabel lblBorrar;
     private javax.swing.JLabel lblClase;
     private javax.swing.JLabel lblExperiencia;
     private javax.swing.JLabel lblFuerza;
@@ -408,6 +484,7 @@ public class VistaPersonaje extends javax.swing.JFrame {
     private javax.swing.JTextField txtAgilidad;
     private javax.swing.JTextField txtExperiencia;
     private javax.swing.JTextField txtFuerza;
+    private javax.swing.JTextField txtIngreseIdBorrar;
     private javax.swing.JTextField txtInteligencia;
     private javax.swing.JTextField txtMana;
     private javax.swing.JTextField txtNivel;
