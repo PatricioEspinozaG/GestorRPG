@@ -27,7 +27,7 @@ public class ControladorPersonaje {
             Connection cnx = con.obtenerConexion();
             
             String query = "INSERT INTO personaje(nombre,clase,nivel,salud,mana,fuerza,agilidad,inteligencia) VALUES(?,?,?,?,?,?,?,?)";
-            PreparedStatement stmt = cnx.prepareCall(query);
+            PreparedStatement stmt = cnx.prepareStatement(query);
             stmt.setString(1, p.getNombre());
             stmt.setString(2, p.getClase());
             stmt.setInt(3, p.getNivel());
@@ -57,7 +57,7 @@ public class ControladorPersonaje {
             Connection cnx = con.obtenerConexion();
             
             String query = "SELECT* FROM personaje";
-            java.sql.PreparedStatement stmt = cnx.prepareCall(query);
+            java.sql.PreparedStatement stmt = cnx.prepareStatement(query);
             
             java.sql.ResultSet rs = stmt.executeQuery();
             
@@ -94,15 +94,14 @@ public class ControladorPersonaje {
             Connection cnx = con.obtenerConexion();
             
             String query = "DELETE FROM personaje WHERE id=?";
-            java.sql.PreparedStatement stmt = cnx.prepareCall(query);
+            java.sql.PreparedStatement stmt = cnx.prepareStatement(query);
             
             stmt.setInt(1, id);
             
             stmt.executeUpdate();
             stmt.close();
             cnx.close();
-            
-            
+                        
         return true;    
         }   
         catch(SQLException e){
@@ -118,7 +117,7 @@ public class ControladorPersonaje {
            Connection cnx = con.obtenerConexion();
            
            String query = "UPDATE personaje set nombre=?, clase=?, nivel=?, salud=?, mana=?, fuerza=?, agilidad=?,inteligencia=? WHERE id=?";
-           PreparedStatement stmt = cnx.prepareCall(query);
+           PreparedStatement stmt = cnx.prepareStatement(query);
            
            stmt.setString(1, per.getNombre());
            stmt.setString(2, per.getClase());
@@ -149,7 +148,7 @@ public class ControladorPersonaje {
             Connection cnx = con.obtenerConexion();
             
             String query = "SELECT* FROM personaje WHERE id=?";
-            PreparedStatement stmt = cnx.prepareCall(query);
+            PreparedStatement stmt = cnx.prepareStatement(query);
             stmt.setInt(1, id);
             
             ResultSet rs = stmt.executeQuery();

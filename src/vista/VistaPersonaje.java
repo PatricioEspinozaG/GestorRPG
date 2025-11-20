@@ -604,7 +604,7 @@ public class VistaPersonaje extends javax.swing.JFrame {
     }//GEN-LAST:event_btnListarTodosActionPerformed
 
     private void btnBorrarPersonajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarPersonajeActionPerformed
-                int id = Integer.parseInt(this.txtIngreseIdBorrar.getText());
+        int id = Integer.parseInt(this.txtIngreseIdBorrar.getText());
         
         int op = JOptionPane.showConfirmDialog(this, "Seguro desea eliminar el personaje?","Eliminar",0);
         
