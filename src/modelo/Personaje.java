@@ -18,6 +18,8 @@ public class Personaje {
     private int fuerza; 
     private int agilidad;
     private int inteligencia;
+    
+    private Mision misionactual;
 
     public Personaje() {
     }
@@ -105,9 +107,17 @@ public class Personaje {
         this.inteligencia = inteligencia;
     }
 
+    public Mision getMisionactual() {
+        return misionactual;
+    }
+
+    public void setMisionactual(Mision misionactual) {
+        this.misionactual = misionactual;
+    }
+
     @Override
     public String toString() {
-        return "Personaje{" + "id=" + id + ", nombre=" + nombre + ", clase=" + clase + ", nivel=" + nivel + ", salud=" + salud + ", mana=" + mana + ", fuerza=" + fuerza + ", agilidad=" + agilidad + ", inteligencia=" + inteligencia + '}';
+        return "Personaje{" + "id=" + id + ", nombre=" + nombre + ", clase=" + clase + ", nivel=" + nivel + ", salud=" + salud + ", mana=" + mana + ", fuerza=" + fuerza + ", agilidad=" + agilidad + ", inteligencia=" + inteligencia + ", misionactual=" + misionactual + '}';
     }
 
     

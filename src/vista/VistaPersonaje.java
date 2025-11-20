@@ -28,7 +28,7 @@ public class VistaPersonaje extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         //this.limpiarAgregarCambioPestaña();
     }
-    /*
+    
     private void limpiarCamposAgregar() {
         txtNombre.setText("");
         txtNivel.setText("");
@@ -38,7 +38,7 @@ public class VistaPersonaje extends javax.swing.JFrame {
         txtAgilidad.setText("");
         txtInteligencia.setText("");
     }
-    
+    /*
     private void limpiarAgregarCambioPestaña(){
         this.jTabbedPanePersonajes.addChangeListener(e -> {
             int index = this.jTabbedPanePersonajes.getSelectedIndex();
@@ -77,7 +77,6 @@ public class VistaPersonaje extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        lblGestionPersonaje = new javax.swing.JLabel();
         jTabbedPanePersonajes = new javax.swing.JTabbedPane();
         jPanel_agregrarPersonaje = new javax.swing.JPanel();
         lblNombre = new javax.swing.JLabel();
@@ -127,12 +126,11 @@ public class VistaPersonaje extends javax.swing.JFrame {
         txtIngreseIdBorrar = new javax.swing.JTextField();
         btnBorrarPersonaje = new javax.swing.JButton();
         jPanel_buscarPersonaje = new javax.swing.JPanel();
+        jButton_volver = new javax.swing.JButton();
+        jButton_salir = new javax.swing.JButton();
+        jLabel_banner = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(600, 630));
-
-        lblGestionPersonaje.setFont(new java.awt.Font("Chiller", 1, 36)); // NOI18N
-        lblGestionPersonaje.setText("Gestion Personajes");
 
         java.awt.GridBagLayout jPanel_agregrarPersonajeLayout = new java.awt.GridBagLayout();
         jPanel_agregrarPersonajeLayout.columnWidths = new int[] {0, 12, 0, 12, 0};
@@ -189,6 +187,11 @@ public class VistaPersonaje extends javax.swing.JFrame {
 
         txtNombre.setToolTipText("prepre");
         txtNombre.setPreferredSize(new java.awt.Dimension(150, 22));
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
@@ -220,6 +223,7 @@ public class VistaPersonaje extends javax.swing.JFrame {
         jPanel_agregrarPersonaje.add(txtMana, gridBagConstraints);
 
         txtFuerza.setToolTipText("prepre");
+        txtFuerza.setEnabled(false);
         txtFuerza.setPreferredSize(new java.awt.Dimension(150, 22));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -228,6 +232,7 @@ public class VistaPersonaje extends javax.swing.JFrame {
         jPanel_agregrarPersonaje.add(txtFuerza, gridBagConstraints);
 
         txtAgilidad.setToolTipText("prepre");
+        txtAgilidad.setEnabled(false);
         txtAgilidad.setPreferredSize(new java.awt.Dimension(150, 22));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -236,6 +241,7 @@ public class VistaPersonaje extends javax.swing.JFrame {
         jPanel_agregrarPersonaje.add(txtAgilidad, gridBagConstraints);
 
         txtInteligencia.setToolTipText("prepre");
+        txtInteligencia.setEnabled(false);
         txtInteligencia.setPreferredSize(new java.awt.Dimension(150, 22));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -256,6 +262,11 @@ public class VistaPersonaje extends javax.swing.JFrame {
         jPanel_agregrarPersonaje.add(btnGuardarPersonaje, gridBagConstraints);
 
         comboClases.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Guerrero", "Cazador", "Mago" }));
+        comboClases.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboClasesActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
@@ -517,33 +528,57 @@ public class VistaPersonaje extends javax.swing.JFrame {
         jPanel_buscarPersonaje.setLayout(jPanel_buscarPersonajeLayout);
         jPanel_buscarPersonajeLayout.setHorizontalGroup(
             jPanel_buscarPersonajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGap(0, 588, Short.MAX_VALUE)
         );
         jPanel_buscarPersonajeLayout.setVerticalGroup(
             jPanel_buscarPersonajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 557, Short.MAX_VALUE)
+            .addGap(0, 543, Short.MAX_VALUE)
         );
 
         jTabbedPanePersonajes.addTab("Buscar Personaje", jPanel_buscarPersonaje);
+
+        jButton_volver.setText("VOLVER");
+        jButton_volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_volverActionPerformed(evt);
+            }
+        });
+
+        jButton_salir.setText("SALIR");
+        jButton_salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_salirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPanePersonajes)
             .addGroup(layout.createSequentialGroup()
-                .addGap(157, 157, 157)
-                .addComponent(lblGestionPersonaje, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton_volver, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel_banner, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTabbedPanePersonajes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(lblGestionPersonaje, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(jTabbedPanePersonajes)
-                .addGap(0, 0, 0))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton_volver, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel_banner, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPanePersonajes))
         );
 
         pack();
@@ -568,16 +603,14 @@ public class VistaPersonaje extends javax.swing.JFrame {
        
         if(controlador.agregarPersonaje(personaje)){
             javax.swing.JOptionPane.showMessageDialog(null, "Personaje Agregado.");
-            //this.limpiarCamposAgregar();
+            this.limpiarCamposAgregar();
         }
-        
-        
-        // T
+    
         // TODO add your handling code here:
     }//GEN-LAST:event_btnGuardarPersonajeActionPerformed
 
     private void btnListarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarTodosActionPerformed
-                int id;
+        int id;
         String nombre, clase;
         int nivel, salud, mana, fuerza, agilidad, inteligencia;
         
@@ -649,6 +682,37 @@ public class VistaPersonaje extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonBuscarPersonajePorIdActionPerformed
 
+    private void comboClasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboClasesActionPerformed
+        String claseSeleccionada = comboClases.getSelectedItem().toString();
+        
+        this.txtFuerza.setEnabled(claseSeleccionada.equals("Guerrero"));
+        this.txtAgilidad.setEnabled(claseSeleccionada.equals("Cazador"));
+        this.txtInteligencia.setEnabled(claseSeleccionada.equals("Mago"));
+        
+        if (!txtFuerza.isEnabled()) txtFuerza.setText("0");
+        if (!txtAgilidad.isEnabled()) txtAgilidad.setText("0");
+        if (!txtInteligencia.isEnabled()) txtInteligencia.setText("0");
+
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboClasesActionPerformed
+
+    private void jButton_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_volverActionPerformed
+        VistaPrincipal principal = new VistaPrincipal();
+        principal.setVisible(true);
+        this.dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_volverActionPerformed
+
+    private void jButton_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_salirActionPerformed
+        System.exit(0);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_salirActionPerformed
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -682,7 +746,10 @@ public class VistaPersonaje extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboClases;
     private javax.swing.JComboBox<String> comboClasesEditar;
     private javax.swing.JButton jButtonBuscarPersonajePorId;
+    private javax.swing.JButton jButton_salir;
+    private javax.swing.JButton jButton_volver;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel_banner;
     private javax.swing.JPanel jPanel_agregrarPersonaje;
     private javax.swing.JPanel jPanel_borrarPersonaje;
     private javax.swing.JPanel jPanel_buscarPersonaje;
@@ -698,7 +765,6 @@ public class VistaPersonaje extends javax.swing.JFrame {
     private javax.swing.JLabel lblClaseEditar;
     private javax.swing.JLabel lblFuerza;
     private javax.swing.JLabel lblFuerzaEditar;
-    private javax.swing.JLabel lblGestionPersonaje;
     private javax.swing.JLabel lblInteligencia;
     private javax.swing.JLabel lblInteligenciaEditar;
     private javax.swing.JLabel lblMana;

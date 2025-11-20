@@ -17,10 +17,6 @@ import java.util.List;
  */
 public class ControladorPersonaje {
 
-    public ControladorPersonaje() {
-    }
-    
-
     public boolean agregarPersonaje(Personaje p){
         try{
             Conexion con = new Conexion();

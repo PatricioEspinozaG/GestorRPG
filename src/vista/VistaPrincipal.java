@@ -61,6 +61,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         btnMision.setFont(new java.awt.Font("Chiller", 1, 30)); // NOI18N
         btnMision.setText("Misiones");
+        btnMision.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMisionActionPerformed(evt);
+            }
+        });
         panelPrincipal.add(btnMision);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -81,8 +86,17 @@ public class VistaPrincipal extends javax.swing.JFrame {
         
         VistaPersonaje vistaPersonaje = new VistaPersonaje();
         vistaPersonaje.setVisible(true);
+        this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPersonajeActionPerformed
+
+    private void btnMisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMisionActionPerformed
+
+        VistaMision vistaMision = new VistaMision();
+        vistaMision.setVisible(true);
+        this.dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMisionActionPerformed
 
     /**
      * @param args the command line arguments

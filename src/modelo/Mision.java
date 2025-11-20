@@ -12,20 +12,31 @@ public class Mision {
     private int id;
     private String titulo;
     private String descripcion;
-    private int recompensaXP;
+    private boolean asignada;
+    private int nivelGanado;
+    private int saludExtra;
+    private int manaExtra;
+    private int fuerzaExtra;
+    private int agilidadExtra;
+    private int inteligenciaExtra;
+    
     private Personaje personaje;
-    private boolean completada;
 
     public Mision() {
     }
 
-    public Mision(int id, String titulo, String descripcion, int recompensaXP, Personaje personaje, boolean completada) {
+    public Mision(int id, String titulo, String descripcion, Personaje personaje, boolean asignada, int nivelGanado, int saludExtra, int manaExtra, int fuerzaExtra, int agilidadExtra, int inteligenciaExtra) {
         this.id = id;
         this.titulo = titulo;
         this.descripcion = descripcion;
-        this.recompensaXP = recompensaXP;
         this.personaje = personaje;
-        this.completada = completada;
+        this.asignada = false;
+        this.nivelGanado = nivelGanado;
+        this.saludExtra = saludExtra;
+        this.manaExtra = manaExtra;
+        this.fuerzaExtra = fuerzaExtra;
+        this.agilidadExtra = agilidadExtra;
+        this.inteligenciaExtra = inteligenciaExtra;
     }
 
     public int getId() {
@@ -52,14 +63,6 @@ public class Mision {
         this.descripcion = descripcion;
     }
 
-    public int getRecompensaXP() {
-        return recompensaXP;
-    }
-
-    public void setRecompensaXP(int recompensaXP) {
-        this.recompensaXP = recompensaXP;
-    }
-
     public Personaje getPersonaje() {
         return personaje;
     }
@@ -68,14 +71,64 @@ public class Mision {
         this.personaje = personaje;
     }
 
-    public boolean isCompletada() {
-        return completada;
+    public boolean isAsignada() {
+        return asignada;
     }
 
-    public void setCompletada(boolean completada) {
-        this.completada = completada;
+    public void setAsignada(boolean asignada) {
+        this.asignada = asignada;
     }
-    
-    //metodos
-    
+
+    public int getNivelGanado() {
+        return nivelGanado;
+    }
+
+    public void setNivelGanado(int nivelGanado) {
+        this.nivelGanado = nivelGanado;
+    }
+
+    public int getSaludExtra() {
+        return saludExtra;
+    }
+
+    public void setSaludExtra(int saludExtra) {
+        this.saludExtra = saludExtra;
+    }
+
+    public int getManaExtra() {
+        return manaExtra;
+    }
+
+    public void setManaExtra(int manaExtra) {
+        this.manaExtra = manaExtra;
+    }
+
+    public int getFuerzaExtra() {
+        return fuerzaExtra;
+    }
+
+    public void setFuerzaExtra(int fuerzaExtra) {
+        this.fuerzaExtra = fuerzaExtra;
+    }
+
+    public int getAgilidadExtra() {
+        return agilidadExtra;
+    }
+
+    public void setAgilidadExtra(int agilidadExtra) {
+        this.agilidadExtra = agilidadExtra;
+    }
+
+    public int getInteligenciaExtra() {
+        return inteligenciaExtra;
+    }
+
+    public void setInteligenciaExtra(int inteligenciaExtra) {
+        this.inteligenciaExtra = inteligenciaExtra;
+    }
+
+    @Override
+    public String toString() {
+        return "Mision{" + "id=" + id + ", titulo=" + titulo + ", descripcion=" + descripcion + ", personaje=" + personaje + ", asignada=" + asignada + ", nivelGanado=" + nivelGanado + ", saludExtra=" + saludExtra + ", manaExtra=" + manaExtra + ", fuerzaExtra=" + fuerzaExtra + ", agilidadExtra=" + agilidadExtra + ", inteligenciaExtra=" + inteligenciaExtra + '}';
+    } 
 }
